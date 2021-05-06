@@ -90,6 +90,7 @@ async function loginFacebookGetTrace () {
     let fb_search_url = 'https://www.facebook.com/search/pages?q=' + fan_page_name
     //  前往搜尋頁面
     await driver.get(fb_search_url)
+    await driver.sleep(3000)
     //因為用搜尋出來的結果不只一個，所以也採用全抓再分析
     const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)))  
     for (const fb_trace_ele of fb_trace_eles) {
