@@ -1,0 +1,11 @@
+{
+  "name": "social_crawler",
+  "version": "1.0.0",
+  "description": "社群爬蟲教學專案",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "dean lin",
+  "license": "MIT"
+}
