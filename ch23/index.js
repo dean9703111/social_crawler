@@ -8,7 +8,7 @@ async function crawler () {
   if (!await preCheck()) {//先檢查基本設定
     return
   }
-
+  
   // const driver = await initDrive();
   // if (!driver) {//driver不存在就結束程式
   //   return

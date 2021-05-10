@@ -95,7 +95,6 @@ async function addSheet (title, auth) {//新增一個sheet到指定的Google She
     const sheetId = response.replies[0].addSheet.properties.sheetId
     console.log('added sheet:' + title)
     return sheetId
-
   }
   catch (err) {
     console.log('The API returned an error: ' + err);

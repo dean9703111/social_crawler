@@ -147,7 +147,7 @@ async function writeSheet (title, result_array, auth) {
   await writeTrace(title, trace_array, lastCol, auth)
 }
 
-async function writeName (title, name_array, auth) {//title都是寫入第一欄
+async function writeName (title, name_array, auth) {//name都是寫入第一欄
   const sheets = google.sheets({ version: 'v4', auth });
   const request = {
     spreadsheetId: process.env.SPREADSHEET_ID,
@@ -161,7 +161,7 @@ async function writeName (title, name_array, auth) {//title都是寫入第一欄
   }
   try {
     await sheets.spreadsheets.values.update(request);
-    console.log(`updated ${title} title`);
+    console.log(`updated ${title} name`);
   } catch (err) {
     console.error(err);
   }
