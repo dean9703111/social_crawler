@@ -129,21 +129,36 @@ async function getFBIGSheet (auth) {// 取得FB粉專、IG帳號的Sheet資訊
 }
 
 async function writeSheet (title, result_array, auth) {
-  // 先在第一欄寫入name(粉專名稱)
-  let name_array = result_array.map(fan_page => [`=HYPERLINK("${fan_page.url}","${fan_page.name}")`]);
-  
-  // 填上名稱
-  name_array.unshift([title])//unshift是指插入陣列開頭
-  await writeName(title, name_array, auth)
+  // 取得線上第一欄的粉專名稱
+  let online_name_array = await readName(title, auth)
+  // 如果json檔有新增的粉專就補到最後面
+  result_array.forEach(fan_page => {
+    if (!online_name_array.includes(`=HYPERLINK("${fan_page.url}","${fan_page.name}")`)) {
+      online_name_array.push(`=HYPERLINK("${fan_page.url}","${fan_page.name}")`)
+    }
+  });
 
-  // 取得目前最後一欄
-  let lastCol = await getLastCol(title, auth)
+  // "粉專名稱+粉專網址"作為寫入追蹤人數欄位的判斷
+  let trace_array = []
+  online_name_array.forEach(name => {
+    let fan_page = result_array.find(fan_page => `=HYPERLINK("${fan_page.url}","${fan_page.name}")` == name)
+    if (fan_page) {
+      trace_array.push([fan_page.trace])
+    } else {
+      trace_array.push([])
+    }
+  });
 
-  // 再寫入trace(追蹤人數)
-  let trace_array = result_array.map(fan_page => [fan_page.trace]);
-  // 抓取當天日期
   const datetime = new Date()
-  trace_array.unshift([dateFormat(datetime, "GMT:yyyy/mm/dd")])
+  if (online_name_array[0] !== title) {//如果是全新的sheet就會在開頭插入
+    online_name_array.unshift(title)
+    trace_array.unshift([dateFormat(datetime, "GMT:yyyy/mm/dd")])
+  } else {//如果不是全新就取代
+    trace_array[0] = [dateFormat(datetime, "GMT:yyyy/mm/dd")]
+  }
+
+  await writeName(title, online_name_array.map(title => [title]), auth)
+  let lastCol = await getLastCol(title, auth)
   await writeTrace(title, trace_array, lastCol, auth)
 }
 
@@ -211,6 +226,30 @@ async function writeTrace (title, trace_array, lastCol, auth) {//填入追蹤者
     console.error(err);
   }
 }
+
+async function readName (title, auth) {
+  const sheets = google.sheets({ version: 'v4', auth });
+  const request = {
+    spreadsheetId: process.env.SPREADSHEET_ID,
+    ranges: [
+      `'${title}'!A:A`
+    ],
+    valueRenderOption: "FORMULA"
+  }
+  try {
+    let name_array = []
+    let values = (await sheets.spreadsheets.values.batchGet(request)).
+      data.valueRanges[0].values;
+    if (values) {//如果沒資料values會是undefine，所以我們只在有資料時塞入
+      name_array = values.map(value => value[0]);
+    }
+    // console.log(name_array)
+    return name_array
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 function getAuth () {
   return new Promise((resolve, reject) => {
     try {

@@ -59,8 +59,8 @@ async function loginFacebookGetTrace () {
   await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"fzdkajry")]`)))
 
   //前往粉專頁面
-  const fanpage = "https://www.facebook.com/baobaonevertell/"// 筆者是寶寶不說的狂熱愛好者
-  await driver.get(fanpage)
+  const fan_page = "https://www.facebook.com/baobaonevertell/"// 筆者是寶寶不說的狂熱愛好者
+  await driver.get(fan_page)
   await driver.sleep(3000)
 
   let fb_trace = 0;//這是紀錄FB追蹤人數

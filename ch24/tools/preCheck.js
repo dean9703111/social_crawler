@@ -59,8 +59,8 @@ function jsonValidator (file_name, fan_page_array) {
       stop_crawler = true
     } if (err.name === 'uniqueItems') {
       //過濾掉重複的
-      fan_page_array = fan_page_array.filter((fanpage, index, self) =>
-        index === self.findIndex(f => (f.url === fanpage.url && f.title === fanpage.title))
+      fan_page_array = fan_page_array.filter((fan_page, index, self) =>
+        index === self.findIndex(f => (f.url === fan_page.url && f.title === fan_page.title))
       )
     }
 

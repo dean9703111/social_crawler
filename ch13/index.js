@@ -62,8 +62,8 @@ async function loginInstagramGetTrace () {
   await driver.wait(until.elementLocated(By.xpath(`//*[@id="react-root"]//*[contains(@class,"_47KiJ")]`)))
 
   //登入成功後要前往粉專頁面
-  const fanpage = "https://www.instagram.com/the_barefoot_master/" // 筆者是寶寶不說的狂熱愛好者
-  await driver.get(fanpage)
+  const fan_page = "https://www.instagram.com/the_barefoot_master/" // 筆者是寶寶不說的狂熱愛好者
+  await driver.get(fan_page)
   await driver.sleep(3000)
 
   let ig_trace = 0;//這是紀錄IG追蹤人數
