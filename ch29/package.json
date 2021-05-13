@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node  -e 'require(\"./index\").crawler()'",
     "win_start": "node  -e \"require('./index').crawler()\"",
-    "schedule": "node tools/schedule.js"
+    "schedule": "node tools/schedule.js",
+    "pm2_reload": "pm2 delete social_crawler && pm2 start ecosystem.config.js && pm2 save",
+    "pm2_start": "pm2 start ecosystem.config.js"
   },
   "author": "dean lin",
   "license": "MIT",
@@ -16,6 +18,7 @@
     "googleapis": "73",
     "is-online": "^9.0.0",
     "jsonschema": "^1.4.0",
+    "path": "^0.12.7",
     "node-schedule": "^2.0.0",
     "selenium-webdriver": "^4.0.0-beta.3"
   }
