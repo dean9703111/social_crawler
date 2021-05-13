@@ -2,7 +2,8 @@ module.exports = {
   apps: [{
     name: 'social_crawler',
     node_args : '-r dotenv/config',
-    script: "node tools/schedule.js",    
+    // script: "node tools/schedule.js",    
+    script: "tools/schedule.js",    
     cwd: __dirname,
     exec_mode: 'fork',
     watch: true,
