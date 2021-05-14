@@ -3,6 +3,7 @@ const isOnline = require('is-online');
 var Validator = require('jsonschema').Validator;
 
 exports.preCheck = preCheck;//讓其他程式在引入時可以使用這個函式
+exports.checkEnv = checkEnv;
 exports.jsonValidator = jsonValidator;
 
 async function preCheck () {
