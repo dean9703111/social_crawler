@@ -5,8 +5,7 @@ try {
   checkEnv(['SCHEDULE_TIME'])
   console.log(`排程套件已啟用`);
   let is_crawler_run = false;//用來確認是否有爬蟲執行中s
-  // schedule.scheduleJob(process.env.SCHEDULE_TIME, async function () {
-  schedule.scheduleJob('0 0 * * * *', async function () {
+  schedule.scheduleJob(process.env.SCHEDULE_TIME, async function () {
     if (!is_crawler_run) {//同時間只允許一隻爬蟲運行
       is_crawler_run = true;
       console.log(`開始執行爬蟲排程作業： ${new Date()}`);
