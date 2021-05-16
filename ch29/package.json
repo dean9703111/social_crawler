@@ -7,8 +7,8 @@
     "start": "node  -e 'require(\"./index\").crawler()'",
     "win_start": "node  -e \"require('./index').crawler()\"",
     "schedule": "node tools/schedule.js",
-    "pm2_reload": "pm2 delete social_crawler && pm2 start ecosystem.config.js && pm2 save",
-    "pm2_start": "pm2 start ecosystem.config.js"
+    "pm2_start": "pm2 start ecosystem.config.js && pm2 save",
+    "pm2_clear_restart": "pm2 delete social_crawler && pm2 start ecosystem.config.js && pm2 save"    
   },
   "author": "dean lin",
   "license": "MIT",
