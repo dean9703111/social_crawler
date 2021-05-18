@@ -1,0 +1,27 @@
+{
+  "name": "social_crawler",
+  "version": "1.0.0",
+  "description": "社群爬蟲教學專案",
+  "main": "index.js",
+  "scripts": {
+    "start": "node  -e 'require(\"./index\").crawler()'",
+    "win_start": "node  -e \"require('./index').crawler()\"",
+    "schedule": "node tools/schedule.js",
+    "pm2_start": "pm2 start ecosystem.config.js && pm2 save",
+    "pm2_clear_restart": "pm2 delete social_crawler && pm2 start ecosystem.config.js && pm2 save"
+  },
+  "author": "dean lin",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dateformat": "^4.5.1",
+    "dotenv": "^8.2.0",
+    "form-data": "^4.0.0",
+    "googleapis": "73",
+    "is-online": "^9.0.0",
+    "jsonschema": "^1.4.0",
+    "node-schedule": "^2.0.0",
+    "path": "^0.12.7",
+    "selenium-webdriver": "^4.0.0-beta.3"
+  }
+}
