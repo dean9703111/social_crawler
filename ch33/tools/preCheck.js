@@ -1,5 +1,6 @@
 require('dotenv').config(); //載入.env環境檔
 const isOnline = require('is-online');
+const { lineNotify } = require("../tools/lineNotify.js");
 var Validator = require('jsonschema').Validator;
 
 exports.preCheck = preCheck;//讓其他程式在引入時可以使用這個函式
@@ -15,6 +16,7 @@ async function preCheck () {
     checkEnv(['FB_USERNAME', 'FB_PASSWORD', 'IG_USERNAME', 'IG_PASSWORD','SPREADSHEET_ID'])
   } catch (e) {
     console.error(e.message)
+    await lineNotify(false,`\n\n❗️錯誤訊息❗️：\n${e.message}`)
     return false;
   }
   return true;
@@ -77,7 +79,7 @@ function jsonValidator (file_name, fan_page_array) {
   });
   if (!result.valid) {
     console.error(`請依據下方提示，檢查 ${file_name} 的內容：`);
-    console.log(localized);
+    console.error(localized);
   }
   if (stop_crawler) {
     return false

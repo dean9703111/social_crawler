@@ -1,5 +1,5 @@
 exports.initDrive = initDrive;//讓其他程式在引入時可以使用這個函式
-
+const { lineNotify } = require("../tools/lineNotify.js");
 const webdriver = require('selenium-webdriver') // 加入虛擬網頁套件
 const chrome = require('selenium-webdriver/chrome');
 const options = new chrome.Options();
@@ -22,6 +22,7 @@ const fs = require("fs");//讀取檔案用
 
 async function initDrive () {
   if (!checkDriver()) {// 檢查Driver是否是設定，如果無法設定就結束程式
+    await lineNotify(false,`\n\n❗️錯誤訊息❗️：\n無法設瀏覽器Driver`)
     return
   }
   let driver = await new webdriver.Builder().

@@ -30,5 +30,5 @@ let localized = result.errors.map(function (err) {
   }
 });
 if (!result.valid) {
-  console.log(localized);
+  console.error(localized);
 }

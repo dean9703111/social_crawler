@@ -76,7 +76,7 @@ function jsonValidator (file_name, fan_page_array) {
   });
   if (!result.valid) {
     console.error(`請依據下方提示，檢查 ${file_name} 的內容：`);
-    console.log(localized);
+    console.error(localized);
   }
   if (stop_crawler) {
     return false

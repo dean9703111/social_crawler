@@ -9,23 +9,30 @@ exports.crawlerFB = crawlerFB;//讓其他程式在引入時可以使用這個函
 async function crawlerFB (driver) {
   fan_page_array = jsonValidator('fb.json', fan_page_array)
   if (!fan_page_array) {
-    return
+    return {
+      "result_array": [], "error_name_array": [],
+      "error_msg": "fb.json 不合規範，請查看 error log"
+    }
   }
   if (await loginFacebook(driver)) {
     console.log(`FB開始爬蟲`)
-    let result_array = []
+    let result_array = [], error_name_array = []// 紀錄無法爬蟲的標題
     for (fan_page of fan_page_array) {
       let trace = null
       try {
         if (await goNewPage(driver, fan_page.url)) {
           trace = await getTrace(driver, fan_page.name)
           if (trace === null) {
+            error_name_array.push(fan_page.name)
             console.log(`「${fan_page.name}」無法抓取追蹤人數`)
           } else {
             console.log(`「${fan_page.name}」追蹤人數：${trace}`)
           }
+        } else {
+          error_name_array.push(fan_page.name)
         }
       } catch (e) {
+        error_name_array.push(fan_page.name)
         console.error(e);
         continue;
       } finally {
@@ -36,7 +43,17 @@ async function crawlerFB (driver) {
         })
       }
     }
-    return result_array
+    // 回傳爬蟲結果、無法爬蟲的粉專標題
+    return {
+      "result_array": result_array,
+      "error_name_array": error_name_array,
+      "error_msg": null
+    }
+  } else {
+    return {
+      "result_array": [], "error_name_array": [],
+      "error_msg": "FB登入失敗"
+    }
   }
 }
 
