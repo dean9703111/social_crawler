@@ -95,7 +95,7 @@ async function loginInstagram (driver) {
 }
 
 async function getTrace (driver, fan_page_name) {
-  let ig_trace = 0;//這是紀錄IG追蹤人數
+  let ig_trace = null;//這是紀錄IG追蹤人數
   try {
     const ig_trace_xpath = `//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a/span`
     const ig_trace_ele = await driver.wait(until.elementLocated(By.xpath(ig_trace_xpath)), 3000)

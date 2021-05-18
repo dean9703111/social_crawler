@@ -66,7 +66,7 @@ async function loginInstagramGetTrace () {
   await driver.get(fan_page)
   await driver.sleep(3000)
 
-  let ig_trace = 0;//這是紀錄IG追蹤人數
+  let ig_trace = null;//這是紀錄IG追蹤人數
   const ig_trace_xpath = `//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a/span`
   const ig_trace_ele = await driver.wait(until.elementLocated(By.xpath(ig_trace_xpath)))
   // ig因為當人數破萬時文字不會顯示，所以改抓title

@@ -63,7 +63,7 @@ async function loginFacebookGetTrace () {
   await driver.get(fan_page)
   await driver.sleep(3000)
 
-  let fb_trace = 0;//這是紀錄FB追蹤人數
+  let fb_trace = null;//這是紀錄FB追蹤人數
   let is_accurate = true;//確認追蹤人數是否精準
   //因為考慮到每個粉專顯示追蹤人數的位置都不一樣，所以就採用全抓再分析
   const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)))
