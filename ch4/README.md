@@ -2,14 +2,14 @@
 ## Ch4 寫程式時該注意的基本原則
 
 ### 4.1	正確的宣告變數
-[var範例程式](var.js)  
-[let範例程式](let.js)  
-[const範例程式1](const.js)  
-[const範例程式2](const_reference.js)  
+[var 範例程式](var.js)  
+[let 範例程式](let.js)  
+[const 範例程式1](const.js)  
+[const 範例程式2](const_reference.js)  
 
 ### 4.2	有意義的命名
-[function命名範例](function_name.js)  
-[variable命名範例](variable_name.js)  
+[function 命名範例](function_name.js)  
+[variable 命名範例](variable_name.js)  
 
 ### 參考資源：
 [Clean Code 無瑕的程式碼 | 閱讀筆記](https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/clean-code-index-51e209cc47db)  

@@ -1,25 +1,25 @@
 #### [回目錄](../README.md)
 ## Ch5 認識Node.js專案
-[github官網](https://github.com/)  
+[github 官網](https://github.com/)  
 
 ### 5.1	建立Node.js程式
-[印出"helloWorld"的index.js程式](index.js)  
+[印出"helloWorld"的 index.js 程式](index.js)  
 
 ### 5.2	執行 Node.js
-**執行index.js的指令**：`node index.js`
+**執行 index.js 的指令**：`node index.js`
 
 ### 5.3	認識專案管家：package.json
-**初始化 package.json的指令**：`npm init`  
+**初始化 package.json 的指令**：`npm init`  
 
 ### 5.4	善用scripts（腳本）執行程式
-**執行start這個scripts的指令**：`yarn start`  
+**執行 start 這個 scripts 的指令**：`yarn start`  
 
 ### 5.5	使用license保護自己的權益
-[選擇license的流程圖來源](https://progressbar.tw/posts/61)  
-[選擇license的參照表格來源](https://noob.tw/open-source-licenses/)  
+[選擇 license 的流程圖來源](https://progressbar.tw/posts/61)  
+[選擇 license 的參照表格來源](https://noob.tw/open-source-licenses/)  
 
 ### 5.6	ℹ️取得筆者專案原始碼
-**用git的指令下載**：`git clone https://github.com/dean9703111/social_crawler.git`  
+**用 git 的指令下載**：`git clone https://github.com/dean9703111/social_crawler.git`  
 **進入章節資料夾**：`cd ch5`  
 **嘗試執行本專案的程式**：`yarn start`  
 
