@@ -7,9 +7,9 @@
 ### 3.2 nvm
 [Windows nvm下載頁面](https://github.com/coreybutler/nvm-windows/releases)  
 [iTerm2官網](https://iterm2.com/)  
-Mac下載Homebrew指令：  
+**Mac下載Homebrew指令**：  
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`  
-Mac用Homebrew來安裝nvm指令：  
+**Mac用Homebrew來安裝nvm指令**：  
 `brew install nvm`  
 
 ### 3.3 Git
