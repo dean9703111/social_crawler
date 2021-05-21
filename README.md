@@ -9,8 +9,8 @@
 [Ch4. 寫程式時該注意的基本原則](/ch4)  
 [Ch5. 認識Node.js專案](/ch5)  
 [Ch6. 用yarn安裝及控管套件](/ch6)  
-[Ch7. env-認識專案環境變數](/ch7)  
-[Ch8. gitignore-設定不加入版控的資料](/ch8)  
+[Ch7. env：善用環境變數幫你遷移專案](/ch7)  
+[Ch8. gitignore：設定不加入版控的資料](/ch8)  
 
 ### PART 4 用selenium-webdriver爬蟲網頁資訊
 [Ch9. 爬蟲之前](/ch9)  

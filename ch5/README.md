@@ -18,7 +18,7 @@
 [選擇 license 的流程圖來源](https://progressbar.tw/posts/61)  
 [選擇 license 的參照表格來源](https://noob.tw/open-source-licenses/)  
 
-### 5.6	ℹ️取得筆者專案原始碼
+### 5.6	取得筆者專案原始碼
 **用 git 的指令下載**：`git clone https://github.com/dean9703111/social_crawler.git`  
 **進入章節資料夾**：`cd ch5`  
 **嘗試執行本專案的程式**：`yarn start`  
