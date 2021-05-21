@@ -1,6 +1,8 @@
-//取出.env檔案填寫的FB資訊
 const fb_username = process.env.FB_USERNAME
 const fb_userpass = process.env.FB_PASSWORD
+const short_time = parseInt(process.env.SHORT_TIME) || 3000
+const long_time = parseInt(process.env.LONG_TIME) || 5000
+
 const { By, until } = require('selenium-webdriver') // 從套件中取出需要用到的功能
 const { jsonValidator } = require("../tools/preCheck.js");
 let fan_page_array = require('../fan_pages/fb.json');
@@ -60,7 +62,9 @@ async function crawlerFB (driver) {
 async function goNewPage (driver, web_url) {
   try {
     await driver.get(web_url)//在這裡要用await確保打開完網頁後才能繼續動作
-    await driver.sleep(3000)
+    //每個頁面爬蟲停留3~6秒，不要造成別人的伺服器負擔
+    const random_time = (Math.floor(Math.random() * 4) + 3) * 1000
+    await driver.sleep(random_time)
     return true
   } catch (e) {
     console.error(`無效的網址：${web_url}`)
@@ -74,18 +78,18 @@ async function loginFacebook (driver) {
   if (await goNewPage(driver, fb_login_url)) {
     try {
       //填入fb登入資訊
-      const fb_email_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="email"]`)), 3000);
+      const fb_email_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="email"]`)), short_time);
       fb_email_ele.sendKeys(fb_username)
-      const fb_pass_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="pass"]`)), 3000);
+      const fb_pass_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="pass"]`)), short_time);
       fb_pass_ele.sendKeys(fb_userpass)
 
       //抓到登入按鈕然後點擊
-      const login_elem = await driver.wait(until.elementLocated(By.xpath(`//*[@id="loginbutton"]`)), 3000)
+      const login_elem = await driver.wait(until.elementLocated(By.xpath(`//*[@id="loginbutton"]`)), short_time)
       login_elem.click()
 
       //因為登入這件事情要等server回應，你直接跳轉粉絲專頁會導致登入失敗
       //用登入後才有的元件，來判斷是否登入
-      await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"fzdkajry")]`)), 5000)
+      await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"fzdkajry")]`)), long_time)
       return true
     } catch (e) {
       console.error('FB登入失敗')
@@ -100,7 +104,7 @@ async function getTrace (driver, fan_page_name) {
   let is_accurate = true;//確認追蹤人數是否精準
   try {
     //因為考慮到每個粉專顯示追蹤人數的位置都不一樣，所以就採用全抓再分析
-    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)), 3000)
+    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)), short_time)
     for (const fb_trace_ele of fb_trace_eles) {
       const fb_text = await fb_trace_ele.getText()
       if (fb_text.includes('人在追蹤')) {// 經典版顯示方式
@@ -135,7 +139,7 @@ async function getTraceFromSearch (driver, fan_page_name, fb_trace) {
     //  前往搜尋頁面
     await goNewPage(driver, fb_search_url)
     //因為用搜尋出來的結果不只一個，所以也採用全抓再分析
-    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)), 3000)
+    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)), short_time)
     for (const fb_trace_ele of fb_trace_eles) {
       let fb_text = await fb_trace_ele.getText()
       if (fb_text.includes('粉絲專頁') && fb_text.includes('位追蹤者')) {
