@@ -42,7 +42,7 @@ function spendTime (start_time, end_time) {
   const minutes = Math.floor(leave2 / (60 * 1000))
   //計算相差秒數  
   const leave3 = leave2 % (60 * 1000)// 計算分鐘數後剩余的毫秒數  
-  const seconds = Math.round(leave3 / 1000)
+  const seconds = Math.floor(leave3 / 1000)
 
   let time_msg = ""
   if (days !== 0)
