@@ -6,7 +6,7 @@
 **本章節 crontab 的內容**：
 ```
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-0 22 * * * cd /Users/d/Documents/social_crawler/ch30/ && yarn start
+0 22 * * * cd /your_path/social_crawler/ch30/ && yarn start
 ```
 **Mac 列出排程的指令**：`crontab -l`  
 

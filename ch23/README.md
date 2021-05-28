@@ -14,7 +14,7 @@
 1.	請先申請好 Google Sheets API 憑證，並將憑證放置「tools/google_sheets」資料夾內
 2.	調整「.env」檔，填上自己的 SPREADSHEET_ID
 3.	記得先在終端機輸入`yarn`將套件安裝
-4.	套件安裝完後在終端機輸入`node tools/google_sheets/index.js`即可執行
+4.	套件安裝完後在終端機輸入`yarn start`即可執行
 
 ### 參考資源
 [callback、Promise 和 async/await 那些事兒](https://noob.tw/js-async/)  
