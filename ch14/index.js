@@ -63,7 +63,7 @@ async function loginInstagramGetTrace (driver) {
   let ig_trace = null;//這是紀錄IG追蹤人數
   const ig_trace_xpath = `//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a/span`
   const ig_trace_ele = await driver.wait(until.elementLocated(By.xpath(ig_trace_xpath)))
-  // ig因為當人數破萬時文字不會顯示，所以改抓title
+  // IG因為當人數破萬時文字不會顯示，所以改抓title
   const ig_text = await ig_trace_ele.getAttribute('title')
   ig_trace = ig_text.replace(/\D/g, '')//只取數字
   console.log(`IG追蹤人數：${ig_trace}`)
@@ -150,7 +150,7 @@ async function crawler () {
     }//這是為了解決跨網域問題 
     ).build();
 
-  //考慮到ig在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
+  //考慮到IG在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
   await driver.manage().window().setRect({ width: 1280, height: 800, x: 0, y: 0 });
 
   //因為有些人是用FB帳號登入IG，為了避免增加FB登出的動作，所以採取先對IG進行爬蟲

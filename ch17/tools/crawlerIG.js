@@ -68,7 +68,7 @@ async function getTrace (driver, fan_page_name) {
   try {
     const ig_trace_xpath = `//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a/span`
     const ig_trace_ele = await driver.wait(until.elementLocated(By.xpath(ig_trace_xpath)), short_time)
-    // ig因為當人數破萬時文字不會顯示，所以改抓title
+    // IG因為當人數破萬時文字不會顯示，所以改抓title
     ig_trace = await ig_trace_ele.getAttribute('title')
     ig_trace = ig_trace.replace(/\D/g, '')//只取數字
     return ig_trace

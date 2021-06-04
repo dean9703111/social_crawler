@@ -17,7 +17,7 @@ async function initDrive () {
     }//這是為了解決跨網域問題 
     ).build();
 
-  //考慮到ig在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
+  //考慮到IG在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
   await driver.manage().window().setRect({ width: 800, height: 720, x: 0, y: 0 });
   driver.get("https://gs.statcounter.com/detect")
 }
