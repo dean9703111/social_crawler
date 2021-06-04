@@ -2,7 +2,7 @@
 const fb_username = process.env.FB_USERNAME
 const fb_userpass = process.env.FB_PASSWORD
 const { By, until } = require('selenium-webdriver') // 從套件中取出需要用到的功能
-exports.crawlerFB = crawlerFB;//讓其他程式在引入時可以使用這個函式
+exports.crawlerFB = crawlerFB;//讓其他檔案在引入時可以使用這個函式
 
 async function crawlerFB (driver) {
   await loginFacebook(driver)
@@ -21,7 +21,7 @@ async function loginFacebook (driver) {
   const fb_login_url = 'https://www.facebook.com/login';//FB登入頁面
   await goNewPage(driver,fb_login_url)
 
-  //填入fb登入資訊
+  //填入FB登入資訊
   const fb_email_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="email"]`)));
   fb_email_ele.sendKeys(fb_username)
   const fb_pass_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="pass"]`)));

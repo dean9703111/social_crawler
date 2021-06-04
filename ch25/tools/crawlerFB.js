@@ -6,7 +6,7 @@ const long_time = parseInt(process.env.LONG_TIME) || 5000
 const { By, until } = require('selenium-webdriver') // 從套件中取出需要用到的功能
 const { jsonValidator } = require("../tools/preCheck.js");
 let fan_page_array = require('../fan_pages/fb.json');
-exports.crawlerFB = crawlerFB;//讓其他程式在引入時可以使用這個函式
+exports.crawlerFB = crawlerFB;//讓其他檔案在引入時可以使用這個函式
 
 async function crawlerFB (driver) {
   fan_page_array = jsonValidator('fb.json', fan_page_array)
@@ -60,7 +60,7 @@ async function loginFacebook (driver) {
   const fb_login_url = 'https://www.facebook.com/login';//FB登入頁面
   if (await goNewPage(driver, fb_login_url)) {
     try {
-      //填入fb登入資訊
+      //填入FB登入資訊
       const fb_email_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="email"]`)), short_time);
       fb_email_ele.sendKeys(fb_username)
       const fb_pass_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="pass"]`)), short_time);

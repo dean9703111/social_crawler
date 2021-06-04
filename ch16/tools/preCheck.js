@@ -1,6 +1,6 @@
 require('dotenv').config(); //載入.env環境檔
 const isOnline = require('is-online');
-exports.preCheck = preCheck;//讓其他程式在引入時可以使用這個函式
+exports.preCheck = preCheck;//讓其他檔案在引入時可以使用這個函式
 
 async function preCheck () {
   if (!await isOnline()) {

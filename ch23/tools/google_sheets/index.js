@@ -2,7 +2,7 @@ const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
 require('dotenv').config() //載入.env環境檔
-exports.updateGoogleSheets = updateGoogleSheets;//讓其他程式在引入時可以使用這個函式
+exports.updateGoogleSheets = updateGoogleSheets;//讓其他檔案在引入時可以使用這個函式
 
 // 範例為readonly，這樣只有讀取權限，拿掉後什麼權限都有了
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];

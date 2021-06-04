@@ -6,7 +6,7 @@ const long_time = parseInt(process.env.LONG_TIME) || 5000
 const { By, until } = require('selenium-webdriver') // 從套件中取出需要用到的功能
 const { jsonValidator } = require("../tools/preCheck.js");
 let fan_page_array = require('../fan_pages/ig.json');
-exports.crawlerIG = crawlerIG;//讓其他程式在引入時可以使用這個函式
+exports.crawlerIG = crawlerIG;//讓其他檔案在引入時可以使用這個函式
 
 async function crawlerIG (driver) {
   fan_page_array = jsonValidator('ig.json', fan_page_array)
@@ -46,7 +46,7 @@ async function loginInstagram (driver) {
   const ig_login_url = 'https://www.instagram.com/accounts/login';//IG登入頁面  
   if (await goNewPage(driver, ig_login_url)) {
     try {
-      //填入ig登入資訊
+      //填入IG登入資訊
       let ig_username_ele = await driver.wait(until.elementLocated(By.css("input[name='username']")), short_time);
       ig_username_ele.sendKeys(ig_username)
       let ig_password_ele = await driver.wait(until.elementLocated(By.css("input[name='password']")), short_time);

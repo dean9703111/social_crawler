@@ -4,7 +4,7 @@ const { crawlerFB } = require("./tools/crawlerFB.js");
 const { crawlerIG } = require("./tools/crawlerIG.js");
 const { updateGoogleSheets } = require("./tools/google_sheets");
 const { preCheck } = require("./tools/preCheck.js");
-exports.crawler = crawler;//讓其他程式在引入時可以使用這個函式
+exports.crawler = crawler;//讓其他檔案在引入時可以使用這個函式
 async function crawler () {
   if (!await preCheck()) {//先檢查基本設定
     return

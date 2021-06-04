@@ -37,7 +37,7 @@ function checkDriver () {
 
 async function loginInstagramGetTrace () {
 
-  if (!checkDriver()) {// 檢查Driver是否是設定，如果無法設定就結束程式
+  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
     return
   }
 
@@ -48,7 +48,7 @@ async function loginInstagramGetTrace () {
   const web = 'https://www.instagram.com/accounts/login';//IG登入頁面
   await driver.get(web)//在這裡要用await確保打開完網頁後才能繼續動作
 
-  //填入ig登入資訊
+  //填入IG登入資訊
   let ig_username_ele = await driver.wait(until.elementLocated(By.css("input[name='username']")));
   ig_username_ele.sendKeys(ig_username)
   let ig_password_ele = await driver.wait(until.elementLocated(By.css("input[name='password']")));

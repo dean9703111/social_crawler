@@ -42,7 +42,7 @@ async function loginInstagramGetTrace (driver) {
   const web = 'https://www.instagram.com/accounts/login';//IG登入頁面
   await driver.get(web)//在這裡要用await確保打開完網頁後才能繼續動作
 
-  //填入ig登入資訊
+  //填入IG登入資訊
   let ig_username_ele = await driver.wait(until.elementLocated(By.css("input[name='username']")));
   ig_username_ele.sendKeys(ig_username)
   let ig_password_ele = await driver.wait(until.elementLocated(By.css("input[name='password']")));
@@ -75,7 +75,7 @@ async function loginFacebookGetTrace (driver) {
   const web = 'https://www.facebook.com/login';//FB登入頁面
   await driver.get(web)//在這裡要用await確保打開完網頁後才能繼續動作
 
-  //填入fb登入資訊
+  //填入FB登入資訊
   const fb_email_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="email"]`)));//找出填寫email的元件
   fb_email_ele.sendKeys(fb_username)//將使用者的資訊填入
   const fb_pass_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="pass"]`)));
@@ -141,7 +141,7 @@ async function loginFacebookGetTrace (driver) {
 }
 
 async function crawler () {
-  if (!checkDriver()) {// 檢查Driver是否是設定，如果無法設定就結束程式
+  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
     return
   }
   let driver = await new webdriver.Builder().

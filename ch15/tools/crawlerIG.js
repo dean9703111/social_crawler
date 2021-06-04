@@ -2,7 +2,7 @@
 const ig_username = process.env.IG_USERNAME
 const ig_userpass = process.env.IG_PASSWORD
 const { By, until } = require('selenium-webdriver') // 從套件中取出需要用到的功能
-exports.crawlerIG = crawlerIG;//讓其他程式在引入時可以使用這個函式
+exports.crawlerIG = crawlerIG;//讓其他檔案在引入時可以使用這個函式
 
 async function crawlerIG (driver) {
   await loginInstagram(driver)
@@ -16,7 +16,7 @@ async function loginInstagram (driver) {
   const ig_login_url = 'https://www.instagram.com/accounts/login';//IG登入頁面    
   await goNewPage(driver, ig_login_url)
 
-  //填入ig登入資訊
+  //填入IG登入資訊
   let ig_username_ele = await driver.wait(until.elementLocated(By.css("input[name='username']")));
   ig_username_ele.sendKeys(ig_username)
   let ig_password_ele = await driver.wait(until.elementLocated(By.css("input[name='password']")));
