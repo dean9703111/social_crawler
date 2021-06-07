@@ -6,9 +6,12 @@
 **本章節 crontab 的內容**：
 ```
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-0 22 * * * cd /your_path/social_crawler/ch30/ && yarn start
+0 22 * * * cd /[your_path]/social_crawler/ch30/ && yarn start
 ```
 **Mac 列出排程的指令**：`crontab -l`  
+
+### 30.2 用「taskschd」設定 Windows 排程
+在執行視窗輸入`taskschd.msc`進入排程設定頁面
 
 ### 參考資源
 [[Mac] macOS Catalina上的cron job遇到Operation not permitted錯誤](https://ephrain.net/mac-macos-catalina-上的-cron-job-遇到-operation-not-permitted-錯誤/)

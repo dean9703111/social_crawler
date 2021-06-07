@@ -158,7 +158,7 @@ async function writeSheet (title, sheet_id, result_array, auth) {
   }
 
   await writeName(title, online_name_array.map(title => [title]), auth)
-  // 插入空欄位
+  // 插入空白欄位
   await insertEmptyCol(title, sheet_id, auth)
   // 寫入追蹤人數
   await writeTrace(title, trace_array, auth)
