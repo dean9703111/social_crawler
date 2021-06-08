@@ -21,19 +21,25 @@ const path = require('path');//用於處理文件路徑的小工具
 const fs = require("fs");//讀取檔案用
 
 async function initDrive () {
-  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+  try {
+    if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+      return
+    }
+    let driver = await new webdriver.Builder().
+      forBrowser("chrome").withCapabilities(options, {
+        acceptSslCerts: true, acceptInsecureCerts: true
+      }//這是為了解決跨網域問題 
+      ).build();
+
+    //考慮到IG在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
+    await driver.manage().window().setRect({ width: 1280, height: 800, x: 0, y: 0 });
+
+    return driver
+  } catch (e) {
+    console.error('無法建立瀏覽器!');
+    console.error(e);
     return
   }
-  let driver = await new webdriver.Builder().
-    forBrowser("chrome").withCapabilities(options, {
-      acceptSslCerts: true, acceptInsecureCerts: true
-    }//這是為了解決跨網域問題 
-    ).build();
-
-  //考慮到IG在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
-  await driver.manage().window().setRect({ width: 1280, height: 800, x: 0, y: 0 });
-
-  return driver
 }
 
 function checkDriver () {
