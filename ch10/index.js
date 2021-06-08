@@ -32,12 +32,19 @@ function checkDriver () {
 }
 
 async function openCrawlerWeb () {
-  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+  let driver
+  try {
+    if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+      return
+    }
+
+    // 建立這個broswer的類型
+    driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();
+  } catch (e) {
+    console.error('無法建立瀏覽器!');
+    console.error(e);
     return
   }
-
-  // 建立這個broswer的類型
-  let driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();
   const web = 'https://medium.com/dean-lin';//填寫你想要前往的網站
   driver.get(web)//透國這個driver打開網頁
 }

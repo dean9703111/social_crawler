@@ -33,11 +33,17 @@ function checkDriver () {
 }
 
 async function loginFacebook () {
-
-  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+  let driver
+  try {
+    if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+      return
+    }
+    driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();
+  } catch (e) {
+    console.error('無法建立瀏覽器!');
+    console.error(e);
     return
   }
-  let driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();
   const web = 'https://www.facebook.com/login';//FB登入頁面
   await driver.get(web)//在這裡要用await確保打開完網頁後才能繼續動作
 
