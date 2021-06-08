@@ -8,7 +8,7 @@ const { lineNotify } = require("./tools/lineNotify.js");
 exports.crawler = crawler;//讓其他檔案在引入時可以使用這個函式
 async function crawler () {
   const start_time = new Date(); // 取得開始時間
-  if (!await preCheck()) {//先檢查基本設定    
+  if (!await preCheck()) {//先檢查基本設定
     return
   }
 

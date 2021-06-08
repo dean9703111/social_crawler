@@ -22,22 +22,28 @@ const fs = require("fs");//讀取檔案用
 
 async function initDrive () {
   if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
-    await lineNotify(false,`\n\n❗️錯誤訊息❗️：\n無法設瀏覽器Driver`)
+    await lineNotify(false,`\n\n❗️錯誤訊息❗️：\n無法設瀏覽器driver`)
     return
   }
-  let driver = await new webdriver.Builder().
-    forBrowser("chrome").withCapabilities(options, {
-      acceptSslCerts: true, acceptInsecureCerts: true
-    }//這是為了解決跨網域問題 
-    ).build();
+  try {
+    let driver = await new webdriver.Builder().
+      forBrowser("chrome").withCapabilities(options, {
+        acceptSslCerts: true, acceptInsecureCerts: true
+      }//這是為了解決跨網域問題 
+      ).build();
 
-  //考慮到IG在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
-  await driver.manage().window().setRect({ width: 1280, height: 800, x: 0, y: 0 });
+    //考慮到IG在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
+    await driver.manage().window().setRect({ width: 1280, height: 800, x: 0, y: 0 });
 
-  return driver
+    return driver
+  } catch {
+    console.error('無法建立瀏覽器!');
+    await lineNotify(false,`\n\n❗️錯誤訊息❗️：\n無法建立瀏覽器!`)
+  }
+  return
 }
 
-function checkDriver () {
+function checkDriver() {
   try {
     chrome.getDefaultService()//確認是否有預設
   } catch {
