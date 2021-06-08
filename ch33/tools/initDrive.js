@@ -20,12 +20,12 @@ if (process.env.HEADLESS === 'true') {
 const path = require('path');//用於處理文件路徑的小工具
 const fs = require("fs");//讀取檔案用
 
-async function initDrive () {
-  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
-    await lineNotify(false,`\n\n❗️錯誤訊息❗️：\n無法設瀏覽器driver`)
-    return
-  }
+async function initDrive () {  
   try {
+    if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+      await lineNotify(false,`\n\n❗️錯誤訊息❗️：\n無法設瀏覽器driver`)
+      return
+    }
     let driver = await new webdriver.Builder().
       forBrowser("chrome").withCapabilities(options, {
         acceptSslCerts: true, acceptInsecureCerts: true
@@ -36,8 +36,9 @@ async function initDrive () {
     await driver.manage().window().setRect({ width: 1280, height: 800, x: 0, y: 0 });
 
     return driver
-  } catch {
+  } catch (e) {
     console.error('無法建立瀏覽器!');
+    console.error(e);
     await lineNotify(false,`\n\n❗️錯誤訊息❗️：\n無法建立瀏覽器!`)
   }
   return
@@ -55,7 +56,7 @@ function checkDriver() {
       chrome.setDefaultService(service);
       console.log('設定driver路徑');
     } else {
-      console.error('無法設定driver路徑');
+      console.error('無法設定driver路徑');      
       return false
     }
   }
