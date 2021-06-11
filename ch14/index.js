@@ -122,7 +122,7 @@ async function loginFacebookGetTrace (driver) {
     await driver.get(fb_search_url)
     await driver.sleep(3000)
     //因為用搜尋出來的結果不只一個，所以也採用全抓再分析
-    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)))  
+    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)))
     for (const fb_trace_ele of fb_trace_eles) {
       let fb_text = await fb_trace_ele.getText()
       if (fb_text.includes('粉絲專頁') && fb_text.includes('位追蹤者')) {
@@ -141,11 +141,11 @@ async function loginFacebookGetTrace (driver) {
 }
 
 async function crawler () {
+  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+    return
+  }
   let driver
   try {
-    if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
-      return
-    }
     driver = await new webdriver.Builder().
       forBrowser("chrome").withCapabilities(options, {
         acceptSslCerts: true, acceptInsecureCerts: true

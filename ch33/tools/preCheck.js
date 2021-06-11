@@ -23,7 +23,7 @@ async function preCheck () {
 }
 
 function checkEnv (variables) {
-  var missing = [];
+  let missing = [];
 
   variables.forEach(function (variable) {
     if (!process.env[variable]) {

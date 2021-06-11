@@ -32,12 +32,11 @@ function checkDriver () {
 }
 
 async function openCrawlerWeb () {
+  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+    return
+  }
   let driver
   try {
-    if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
-      return
-    }
-
     // 建立這個broswer的類型
     driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();
   } catch (e) {

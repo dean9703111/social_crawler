@@ -33,11 +33,11 @@ function checkDriver () {
 }
 
 async function loginFacebook () {
+  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+    return
+  }
   let driver
   try {
-    if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
-      return
-    }
     driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();
   } catch (e) {
     console.error('無法建立瀏覽器!');
