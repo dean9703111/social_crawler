@@ -14,7 +14,7 @@
 [Git 官網](https://git-scm.com/)  
 [Windows Git 下載連結](https://git-scm.com/download/win)  
 [Mac Git 下載連結](https://git-scm.com/download/mac)  
-[Windows 桌面版](https://desktop.github.com/s)  
+[Windows 桌面版](https://desktop.github.com/)  
 
 ### 3.4 Yarn
 [Yarn 官網](https://classic.yarnpkg.com/lang/en/)  
