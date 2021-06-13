@@ -87,7 +87,7 @@ async function loginFacebook (driver) {
       const login_elem = await driver.wait(until.elementLocated(By.xpath(`//*[@id="loginbutton"]`)), short_time)
       login_elem.click()
 
-      //因為登入這件事情要等server回應，你直接跳轉粉絲專頁會導致登入失敗
+      //因為登入這件事情要等Server回應，你直接跳轉粉絲專頁會導致登入失敗
       //用登入後才有的元件，來判斷是否登入
       await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"fzdkajry")]`)), long_time)
       return true

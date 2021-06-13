@@ -37,7 +37,7 @@ async function openCrawlerWeb () {
   }
   let driver
   try {
-    // 建立這個broswer的類型
+    // 建立這個Browser的類型
     driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();
   } catch (e) {
     console.error('無法建立瀏覽器!');

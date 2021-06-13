@@ -3,6 +3,7 @@
 
 ### 6.2	如何找出適合的套件
 [npm 官網](https://www.npmjs.com/)  
+[npm 上的 env 套件](https://www.npmjs.com/package/env)  
 [npm 上的 dotenv 套件](https://www.npmjs.com/package/dotenv)  
 [dotenv 說明文件](https://github.com/motdotla/dotenv#readme)  
 [dotenv Issues](https://github.com/motdotla/dotenv/issues)  

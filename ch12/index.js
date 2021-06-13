@@ -42,7 +42,7 @@ async function loginFacebookGetTrace () {
     return
   }
   try {
-    driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();// 建立這個browser的類型
+    driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();// 建立這個Browser的類型
   } catch (e) {
     console.error('無法建立瀏覽器!');
     console.error(e);

@@ -89,7 +89,7 @@ async function loginFacebookGetTrace (driver) {
   await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"fzdkajry")]`)))
 
   //前往粉專頁面
-  const fan_page = "https://www.facebook.com/baobaonevertell/"// 筆者是寶寶不說的狂熱愛好者
+  const fan_page = "https://www.facebook.com/baobaonevertell/"
   await driver.get(fan_page)
   await driver.sleep(3000)
 

@@ -41,7 +41,7 @@ async function loginInstagramGetTrace () {
   }
   let driver
   try {
-    driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();// 建立這個browser的類型
+    driver = await new webdriver.Builder().forBrowser("chrome").withCapabilities(options).build();// 建立這個Browser的類型
     //考慮到IG在不同螢幕寬度時的Xpath不一樣，所以我們要在這裡設定統一的視窗大小
     await driver.manage().window().setRect({ width: 1280, height: 800, x: 0, y: 0 });
   } catch (e) {
