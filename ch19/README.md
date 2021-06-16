@@ -3,6 +3,7 @@
 
 ### 19.4 偽裝瀏覽器身份
 [知道當下瀏覽器的 user-agent](https://gs.statcounter.com/detect)  
+**專案的「user-agent」參數**：`options.addArguments("user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'")`  
 **可在終端機輸入指令來確認「user-agent」是否成功偽裝**：`node day19/tools/getUserAgent.js`  
 
 ### 專案使用提醒
