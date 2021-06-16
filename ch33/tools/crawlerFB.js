@@ -18,7 +18,7 @@ async function crawlerFB (driver) {
   }
   if (await loginFacebook(driver)) {
     console.log(`FB開始爬蟲`)
-    let result_array = [], error_name_array = []// 紀錄無法爬蟲的標題
+    let result_array = [], error_name_array = []
     for (fan_page of fan_page_array) {
       let trace = null
       try {
@@ -45,7 +45,7 @@ async function crawlerFB (driver) {
         })
       }
     }
-    // 回傳爬蟲結果、無法爬蟲的粉專標題
+    // 回傳爬蟲結果、無法取得追蹤人數的粉專
     return {
       "result_array": result_array,
       "error_name_array": error_name_array,

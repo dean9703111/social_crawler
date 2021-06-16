@@ -8,7 +8,7 @@ function combineErrNameMsg (error_name_array, type) {
     error_msg = `${error_msg}\n${error_name}`
   }
   if (error_msg !== "") {
-    error_msg = `\n下列${type}標題無法正常爬蟲:${error_msg}`
+    error_msg = `\n下列${type}無法取得追蹤人數:${error_msg}`
   }
   return error_msg
 }
@@ -17,13 +17,13 @@ function combineMsg (spend_time, ig_result, fb_result) {
   if (ig_result.error_msg) {
     error_msg += `\n${ig_result.error_msg}`
   } else {
-    error_msg += combineErrNameMsg(ig_result.error_name_array, "IG")
+    error_msg += combineErrNameMsg(ig_result.error_name_array, "IG帳號")
   }
 
   if (fb_result.error_msg) {
     error_msg += `\n${fb_result.error_msg}`
   } else {
-    error_msg += combineErrNameMsg(fb_result.error_name_array, "FB")
+    error_msg += combineErrNameMsg(fb_result.error_name_array, "FB粉專")
   }
   if (error_msg !== "") {
     error_msg = `\n\n❗錯誤訊息❗：${error_msg}`
