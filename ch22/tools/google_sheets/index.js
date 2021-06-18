@@ -70,20 +70,20 @@ function getNewToken (oAuth2Client, callback) {
 
 async function listMySheet (auth) {
   const sheets = google.sheets({ version: 'v4', auth });
-  const title = '工作表1'//請你更改成自己設定的sheet(工作表)名稱
+  const title = '工作表1';//請你更改成自己設定的sheet(工作表)名稱
   const request = {
-      spreadsheetId: process.env.SPREADSHEET_ID,
-      range: [
-          //這是指抓取的範圍，你也可以改寫成A1:A300(抓第1欄的第1列到第300列)
-          `'${title}'!A:ZZ`
-      ],
-      valueRenderOption: "FORMULA"//FORMATTED_VALUE|UNFORMATTED_VALUE|FORMULA
-  }
+    spreadsheetId: process.env.SPREADSHEET_ID,
+    range: [
+      //這是指抓取的範圍，你也可以改寫成A1:A300(抓第1欄的第1列到第300列)
+      `'${title}'!A:ZZ`
+    ],
+    valueRenderOption: "FORMULA"//FORMATTED_VALUE|UNFORMATTED_VALUE|FORMULA
+  };
   try {
-      //這裡改寫為await，之後會有順序執行的需求
-      let values = (await sheets.spreadsheets.values.get(request)).data.values;
-      console.log(values)
+    //這裡改寫為await，之後會有順序執行的需求
+    let values = (await sheets.spreadsheets.values.get(request)).data.values;
+    console.log(values);
   } catch (err) {
-      console.error(err);
+    console.error(err);
   }
 }

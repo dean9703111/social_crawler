@@ -2,7 +2,7 @@ const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
 const dateFormat = require('dateformat');
-require('dotenv').config() //載入.env環境檔
+require('dotenv').config(); //載入.env環境檔
 exports.updateGoogleSheets = updateGoogleSheets;//讓其他檔案在引入時可以使用這個函式
 
 // 範例為readonly，這樣只有讀取權限，拿掉後什麼權限都有了
@@ -65,11 +65,11 @@ async function getSheets (auth) {//取得Google Sheets所有的sheet
   const request = {
     spreadsheetId: process.env.SPREADSHEET_ID,
     includeGridData: false,
-  }
+  };
   try {
     let response = (await sheets.spreadsheets.get(request)).data;
-    const sheets_info = response.sheets
-    return sheets_info
+    const sheets_info = response.sheets;
+    return sheets_info;
   } catch (err) {
     console.error(err);
   }
@@ -93,9 +93,9 @@ async function addSheet (title, auth) {//新增一個sheet到指定的Google She
   };
   try {
     const response = (await sheets.spreadsheets.batchUpdate(request)).data;
-    const sheetId = response.replies[0].addSheet.properties.sheetId
-    console.log('added sheet:' + title)
-    return sheetId
+    const sheetId = response.replies[0].addSheet.properties.sheetId;
+    console.log('added sheet:' + title);
+    return sheetId;
 
   }
   catch (err) {
@@ -107,21 +107,21 @@ async function getFBIGSheet (auth) {// 取得FB粉專、IG帳號的Sheet資訊
   const sheets = [//我們Google Sheets需要的sheet
     { title: 'FB粉專', id: null },
     { title: 'IG帳號', id: null }
-  ]
-  const online_sheets = await getSheets(auth)//抓目前存在的sheet
+  ];
+  const online_sheets = await getSheets(auth);//抓目前存在的sheet
 
   for (sheet of sheets) {
     online_sheets.forEach(online_sheet => {
       if (sheet.title == online_sheet.properties.title) {// 如果線上已經存在相同的sheet title就直接使用相同id
-        sheet.id = online_sheet.properties.sheetId
+        sheet.id = online_sheet.properties.sheetId;
       }
-    })
+    });
     if (sheet.id == null) {//如果該sheet尚未被建立，則建立
-      console.log(sheet.title + ':not exsit')
+      console.log(sheet.title + ':not exsit');
       try {
-        sheet.id = await addSheet(sheet.title, auth)//如果不存在就會新增該sheet        
+        sheet.id = await addSheet(sheet.title, auth);//如果不存在就會新增該sheet        
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
     }
   }
@@ -131,20 +131,20 @@ async function getFBIGSheet (auth) {// 取得FB粉專、IG帳號的Sheet資訊
 async function writeSheet (title, result_array, auth) {
   // 先在第一欄寫入name(粉專名稱)
   let name_array = result_array.map(fan_page => [`=HYPERLINK("${fan_page.url}","${fan_page.name}")`]);
-  
+
   // 填上名稱
-  name_array.unshift([title])//unshift是指插入陣列開頭
-  await writeName(title, name_array, auth)
+  name_array.unshift([title]);//unshift是指插入陣列開頭
+  await writeName(title, name_array, auth);
 
   // 取得目前最後一欄
-  let lastCol = await getLastCol(title, auth)
+  let lastCol = await getLastCol(title, auth);
 
   // 再寫入trace(追蹤人數)
   let trace_array = result_array.map(fan_page => [fan_page.trace]);
   // 抓取當天日期
-  const datetime = new Date()
-  trace_array.unshift([dateFormat(datetime, "GMT:yyyy/mm/dd")])
-  await writeTrace(title, trace_array, lastCol, auth)
+  const datetime = new Date();
+  trace_array.unshift([dateFormat(datetime, "GMT:yyyy/mm/dd")]);
+  await writeTrace(title, trace_array, lastCol, auth);
 }
 
 async function writeName (title, name_array, auth) {//name都是寫入第一欄
@@ -158,7 +158,7 @@ async function writeName (title, name_array, auth) {//name都是寫入第一欄
     resource: {
       values: name_array
     }
-  }
+  };
   try {
     await sheets.spreadsheets.values.update(request);
     console.log(`updated ${title} name`);
@@ -175,11 +175,11 @@ async function getLastCol (title, auth) {
       `'${title}'!A1:ZZ1`
     ],
     majorDimension: "COLUMNS",
-  }
+  };
   try {
     let values = (await sheets.spreadsheets.values.batchGet(request)).data.valueRanges[0].values;
     // console.log(title + " StartCol: " + toColumnName(values.length + 1))
-    return toColumnName(values.length + 1)
+    return toColumnName(values.length + 1);
   } catch (err) {
     console.error(err);
   }
@@ -203,7 +203,7 @@ async function writeTrace (title, trace_array, lastCol, auth) {//填入追蹤者
     resource: {
       values: trace_array
     }
-  }
+  };
   try {
     await sheets.spreadsheets.values.update(request);
     console.log(`updated ${title} trace`);
@@ -214,26 +214,26 @@ async function writeTrace (title, trace_array, lastCol, auth) {//填入追蹤者
 function getAuth () {
   return new Promise((resolve, reject) => {
     try {
-      const content = JSON.parse(fs.readFileSync('tools/google_sheets/credentials.json'))
+      const content = JSON.parse(fs.readFileSync('tools/google_sheets/credentials.json'));
       authorize(content, auth => {
-        resolve(auth)
-      })
+        resolve(auth);
+      });
     } catch (err) {
       console.error('憑證錯誤');
-      reject(err)
+      reject(err);
     }
-  })
+  });
 }
-async function updateGoogleSheets (ig_result_array, fb_result_array) {
+async function updateGoogleSheets (ig_result_array = [], fb_result_array = []) {
   try {
-    const auth = await getAuth()
-    let sheets = await getFBIGSheet(auth)//取得線上FB、IG的sheet資訊
-    console.log('FB、IG Sheet資訊:')
-    console.log(sheets)
+    const auth = await getAuth();
+    let sheets = await getFBIGSheet(auth);//取得線上FB、IG的sheet資訊
+    console.log('FB、IG Sheet資訊:');
+    console.log(sheets);
 
     // 寫入各自的Sheet
-    await writeSheet('FB粉專', fb_result_array, auth)
-    await writeSheet('IG帳號', ig_result_array, auth)
+    await writeSheet('FB粉專', fb_result_array, auth);
+    await writeSheet('IG帳號', ig_result_array, auth);
     console.log(`成功更新Google Sheets：https://docs.google.com/spreadsheets/d/${process.env.SPREADSHEET_ID}`);
   } catch (err) {
     console.error('更新Google Sheets失敗');

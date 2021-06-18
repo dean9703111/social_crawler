@@ -1,4 +1,4 @@
-const axios = require('axios')
+const axios = require('axios');
 var FormData = require('form-data');
 require('dotenv').config();
 
@@ -34,4 +34,4 @@ function lineNotify () {
     }
   });
 }
-lineNotify()
+lineNotify();

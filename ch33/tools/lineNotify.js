@@ -1,32 +1,32 @@
-const axios = require('axios')
+const axios = require('axios');
 var FormData = require('form-data');
 require('dotenv').config();
 module.exports.lineNotify = lineNotify;
 function combineErrNameMsg (error_name_array, type) {
-  let error_msg = ""
+  let error_msg = "";
   for (const error_name of error_name_array) {
-    error_msg = `${error_msg}\n${error_name}`
+    error_msg = `${error_msg}\n${error_name}`;
   }
   if (error_msg !== "") {
-    error_msg = `\n下列${type}無法取得追蹤人數:${error_msg}`
+    error_msg = `\n下列${type}無法取得追蹤人數:${error_msg}`;
   }
-  return error_msg
+  return error_msg;
 }
 function combineMsg (spend_time, ig_result, fb_result) {
-  let error_msg = ""
+  let error_msg = "";
   if (ig_result.error_msg) {
-    error_msg += `\n${ig_result.error_msg}`
+    error_msg += `\n${ig_result.error_msg}`;
   } else {
-    error_msg += combineErrNameMsg(ig_result.error_name_array, "IG帳號")
+    error_msg += combineErrNameMsg(ig_result.error_name_array, "IG帳號");
   }
 
   if (fb_result.error_msg) {
-    error_msg += `\n${fb_result.error_msg}`
+    error_msg += `\n${fb_result.error_msg}`;
   } else {
-    error_msg += combineErrNameMsg(fb_result.error_name_array, "FB粉專")
+    error_msg += combineErrNameMsg(fb_result.error_name_array, "FB粉專");
   }
   if (error_msg !== "") {
-    error_msg = `\n\n❗錯誤訊息❗：${error_msg}`
+    error_msg = `\n\n❗錯誤訊息❗：${error_msg}`;
   }
   // 組合傳送訊息
   const message =
@@ -35,15 +35,15 @@ function combineMsg (spend_time, ig_result, fb_result) {
     `\n總計掃描FB粉專: ${fb_result.result_array.length} 、IG帳號: ${ig_result.result_array.length}` +
     `\nGoogle Sheet: https://docs.google.com/spreadsheets/d/${process.env.SPREADSHEET_ID}` +
     error_msg;
-  return message
+  return message;
 }
 async function lineNotify (type, result) {
   const token = process.env.LINE_TOKEN;
-  let message = ""
+  let message = "";
   if (type) {
-    message = combineMsg(result.spend_time, result.ig_result, result.fb_result)
+    message = combineMsg(result.spend_time, result.ig_result, result.fb_result);
   } else {
-    message = result
+    message = result;
   }
 
   const form_data = new FormData();

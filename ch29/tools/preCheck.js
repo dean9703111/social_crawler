@@ -8,13 +8,13 @@ exports.jsonValidator = jsonValidator;
 
 async function preCheck () {
   if (!await isOnline()) {
-    console.error('網路連線失敗')
+    console.error('網路連線失敗');
     return false;
   }
   try {
-    checkEnv(['FB_USERNAME', 'FB_PASSWORD', 'IG_USERNAME', 'IG_PASSWORD','SPREADSHEET_ID'])
+    checkEnv(['FB_USERNAME', 'FB_PASSWORD', 'IG_USERNAME', 'IG_PASSWORD', 'SPREADSHEET_ID']);
   } catch (e) {
-    console.error(e.message)
+    console.error(e.message);
     return false;
   }
   return true;
@@ -50,19 +50,19 @@ function jsonValidator (file_name, fan_page_array) {
       },
       "required": ["name", "url"]
     }
-  }
-  let result = v.validate(fan_page_array, schema)
-  let stop_crawler = false
+  };
+  let result = v.validate(fan_page_array, schema);
+  let stop_crawler = false;
   let localized = result.errors.map(function (err) {
-    const order = err.path[0]
+    const order = err.path[0];
     if (err.name === 'required' || err.name === 'type' || err.name === 'minItems') {
       // 如果有資訊上的錯誤就直接終止爬蟲
-      stop_crawler = true
+      stop_crawler = true;
     } if (err.name === 'uniqueItems') {
       //過濾掉重複的
       fan_page_array = fan_page_array.filter((fan_page, index, self) =>
         index === self.findIndex(f => (f.url === fan_page.url && f.title === fan_page.title))
-      )
+      );
     }
 
     if (err.name === 'required') {
@@ -70,9 +70,9 @@ function jsonValidator (file_name, fan_page_array) {
     } else if (err.name === 'type') {
       return `第${order}個物件的「${err.path[1]}」須為字串`;
     } else if (err.name === 'uniqueItems') {
-      return `警告：有重複的物件`
+      return `警告：有重複的物件`;
     } else if (err.name === 'minItems') {
-      return `警告：json內容為空`
+      return `警告：json內容為空`;
     }
   });
   if (!result.valid) {
@@ -80,7 +80,7 @@ function jsonValidator (file_name, fan_page_array) {
     console.error(localized);
   }
   if (stop_crawler) {
-    return false
+    return false;
   }
-  return fan_page_array
+  return fan_page_array;
 }

@@ -4,13 +4,13 @@ exports.preCheck = preCheck;//讓其他檔案在引入時可以使用這個函�
 
 async function preCheck () {
   if (!await isOnline()) {
-    console.error('網路連線失敗')
+    console.error('網路連線失敗');
     return false;
   }
   try {
-    checkEnv(['FB_USERNAME', 'FB_PASSWORD', 'IG_USERNAME', 'IG_PASSWORD'])
+    checkEnv(['FB_USERNAME', 'FB_PASSWORD', 'IG_USERNAME', 'IG_PASSWORD']);
   } catch (e) {
-    console.error(e.message)
+    console.error(e.message);
     return false;
   }
   return true;
