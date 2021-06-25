@@ -4,5 +4,5 @@ function test () {
 
 	// 再次宣告
 	var baby = "寶寶被污染了";
-	console.log(baby); // 會印出'寶寶被污染了'
+	console.log(baby); // 會印出"寶寶被污染了"
 }

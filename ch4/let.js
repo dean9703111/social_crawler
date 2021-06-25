@@ -4,7 +4,7 @@ function test () {
 
   // 重新指定值
   baby = "寶寶變身";
-  console.log(baby); // 會印出'寶寶變身'
+  console.log(baby); // 會印出"寶寶變身"
 
   // 再次宣告
   let baby = "寶寶壞掉了";
