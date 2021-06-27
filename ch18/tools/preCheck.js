@@ -60,7 +60,8 @@ function jsonValidator (file_name, fan_page_array) {
     } if (err.name === 'uniqueItems') {
       //過濾掉重複的
       fan_page_array = fan_page_array.filter((fan_page, index, self) =>
-        index === self.findIndex(f => (f.url === fan_page.url && f.title === fan_page.title))
+        index === self.findIndex(f =>
+          (f.url === fan_page.url && f.title === fan_page.title))
       );
     }
 
