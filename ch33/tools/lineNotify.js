@@ -13,7 +13,7 @@ function combineErrNameMsg (error_name_array, type) {
   return error_msg;
 }
 function combineMsg (spend_time, ig_result, fb_result) {
-  let error_msg = "";
+  let error_msg = "";// 彙整錯誤訊息
   if (ig_result.error_msg) {
     error_msg += `\n${ig_result.error_msg}`;
   } else {

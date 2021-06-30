@@ -31,17 +31,18 @@ async function crawler () {
   lineNotify(true, { spend_time, ig_result, fb_result });
 }
 function spendTime (start_time, end_time) {
-  const milisecond = end_time.getTime() - start_time.getTime();  //時間差的毫秒數  
+  //計算相差毫秒數
+  const milisecond = end_time.getTime() - start_time.getTime();
   //計算出相差天數  
   const days = Math.floor(milisecond / (24 * 3600 * 1000));
-  //計算出小時數  
-  const leave1 = milisecond % (24 * 3600 * 1000);// 計算天數後剩余的毫秒數  
+  //計算出相差小時數  
+  const leave1 = milisecond % (24 * 3600 * 1000);// 計算天數後剩餘的毫秒數  
   const hours = Math.floor(leave1 / (3600 * 1000));
   //計算相差分鐘數  
-  const leave2 = leave1 % (3600 * 1000);// 計算小時數後剩余的毫秒數  
+  const leave2 = leave1 % (3600 * 1000);// 計算小時數後剩餘的毫秒數  
   const minutes = Math.floor(leave2 / (60 * 1000));
   //計算相差秒數  
-  const leave3 = leave2 % (60 * 1000);// 計算分鐘數後剩余的毫秒數  
+  const leave3 = leave2 % (60 * 1000);// 計算分鐘數後剩餘的毫秒數  
   const seconds = Math.floor(leave3 / 1000);
 
   let time_msg = "";
