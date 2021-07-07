@@ -58,7 +58,7 @@ function jsonValidator (file_name, fan_page_array) {
   let localized = result.errors.map(function (err) {
     const order = err.path[0];
     if (err.name === 'required' || err.name === 'type' || err.name === 'minItems') {
-      // 如果有資訊上的錯誤就直接終止爬蟲
+      // 如果資料不完整或是格式錯誤就停止爬蟲
       stop_crawler = true;
     } if (err.name === 'uniqueItems') {
       //過濾掉重複的

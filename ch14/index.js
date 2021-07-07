@@ -63,7 +63,7 @@ async function loginInstagramGetTrace (driver) {
   let ig_trace = null;//這是紀錄IG追蹤人數
   const ig_trace_xpath = `//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a/span`;
   const ig_trace_ele = await driver.wait(until.elementLocated(By.xpath(ig_trace_xpath)));
-  // IG因為當人數破萬時文字不會顯示，所以改抓title
+  // IG因為當人數破萬時會縮寫顯示，所以改抓title
   const ig_text = await ig_trace_ele.getAttribute('title');
   ig_trace = ig_text.replace(/\D/g, '');//只取數字
   console.log(`IG追蹤人數：${ig_trace}`);
