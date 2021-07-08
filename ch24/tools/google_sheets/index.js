@@ -129,21 +129,21 @@ async function getFBIGSheet (auth) {// 取得FB粉專、IG帳號的Sheet資訊
 }
 
 async function writeSheet (title, result_array, auth) {
-  // 先在第一欄寫入name(粉專名稱)
+  // 組合寫入第一欄的HYPERLINK(粉專名稱+粉專網址)陣列
   let name_array = result_array.map(fan_page => [`=HYPERLINK("${fan_page.url}","${fan_page.name}")`]);
-
-  // 填上名稱
   name_array.unshift([title]);//unshift是指插入陣列開頭
+  // 填上名稱
   await writeName(title, name_array, auth);
 
   // 取得目前最後一欄
   let lastCol = await getLastCol(title, auth);
 
-  // 再寫入trace(追蹤人數)
+  // 取出粉專追蹤人數
   let trace_array = result_array.map(fan_page => [fan_page.trace]);
   // 抓取當天日期
   const datetime = new Date();
   trace_array.unshift([dateFormat(datetime, "GMT:yyyy/mm/dd")]);
+  // 寫入追蹤人數
   await writeTrace(title, trace_array, lastCol, auth);
 }
 

@@ -21,7 +21,8 @@
 ### 29.4 使用「pm2-logrotate」來切割 log
 
 [pm2-logrotate 官方文件](https://github.com/keymetrics/pm2-logrotate#readme)  
-**pm2-logrotate 安裝指令**：`pm2 install pm2-logrotate`
+**pm2-logrotate 安裝指令**：`pm2 install pm2-logrotate`  
+**用 pm2-logrotate 設定 log 檔超過 10KB 就分割**：`pm2 set pm2-logrotate:max_size 10K`
 
 ### 29.5 用「pm2 ecosystem」取代「pm2 CLI」
 

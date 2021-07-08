@@ -138,7 +138,7 @@ async function writeSheet (title, sheet_id, result_array, auth) {
     }
   });
 
-  // "粉專名稱+粉專網址"作為寫入追蹤人數欄位的判斷
+  // 以「粉專名稱+粉專網址」作為寫入追蹤人數欄位的判斷
   let trace_array = [];
   online_name_array.forEach(name => {
     let fan_page = result_array.find(fan_page => `=HYPERLINK("${fan_page.url}","${fan_page.name}")` == name);
@@ -150,7 +150,7 @@ async function writeSheet (title, sheet_id, result_array, auth) {
   });
 
   const datetime = new Date();
-  if (online_name_array[0] !== title) {//如果是全新的sheet就會在開頭插入
+  if (online_name_array[0] !== title) {//如果是全新的Sheet就會在開頭插入
     online_name_array.unshift(title);
     trace_array.unshift([dateFormat(datetime, "GMT:yyyy/mm/dd")]);
   } else {//如果不是全新就取代

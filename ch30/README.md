@@ -4,6 +4,7 @@
 
 ### 30.1 用「Crontab」設定 Mac 排程
 
+**Finder 前往資料夾的路徑**：`/usr/sbin/cron`  
 **Mac 編輯排程的指令**：`crontab -e`  
 **本章節 crontab 的內容（記得將 your_path 更換成自己的路徑）**：
 
