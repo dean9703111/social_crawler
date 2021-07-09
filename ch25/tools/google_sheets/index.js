@@ -138,7 +138,7 @@ async function writeSheet (title, result_array, auth) {
     }
   });
 
-  // 以「粉專名稱+粉專網址」作為寫入追蹤人數欄位的判斷
+  // 以"粉專名稱+粉專網址"作為寫入追蹤人數欄位的判斷
   let trace_array = [];
   online_name_array.forEach(name => {
     let fan_page = result_array.find(fan_page => `=HYPERLINK("${fan_page.url}","${fan_page.name}")` == name);
