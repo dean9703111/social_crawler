@@ -74,7 +74,7 @@ async function getSheets (auth) {//取得Google Sheets所有的sheet
   }
 }
 
-async function addSheet (title, auth) {//新增一個sheet到指定的Google Sheets
+async function addSheet (title, auth) {//新增一個Sheet到指定的Google Sheets
   const sheets = google.sheets({ version: 'v4', auth });
   const request = {
     // The ID of the spreadsheet
