@@ -59,8 +59,8 @@ async function loginInstagramGetTrace () {
   ig_password_ele.sendKeys(ig_userpass);
 
   //抓到登入按鈕然後點擊
-  const login_elem = await driver.wait(until.elementLocated(By.css("button[type='submit']")));
-  login_elem.click();
+  const login_ele = await driver.wait(until.elementLocated(By.css("button[type='submit']")));
+  login_ele.click();
 
   //登入後才會有右上角功能列，我們以這個來判斷是否登入
   await driver.wait(until.elementLocated(By.xpath(`//*[@id="react-root"]//*[contains(@class,"_47KiJ")]`)));

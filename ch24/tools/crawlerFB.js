@@ -67,8 +67,8 @@ async function loginFacebook (driver) {
       fb_pass_ele.sendKeys(fb_userpass);
 
       //抓到登入按鈕然後點擊
-      const login_elem = await driver.wait(until.elementLocated(By.xpath(`//*[@id="loginbutton"]`)), short_time);
-      login_elem.click();
+      const login_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="loginbutton"]`)), short_time);
+      login_ele.click();
 
       //因為登入這件事情要等Server回應，你直接跳轉粉絲專頁會導致登入失敗
       //用登入後才有的元件，來判斷是否登入

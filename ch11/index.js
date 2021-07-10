@@ -54,7 +54,7 @@ async function loginFacebook () {
   fb_pass_ele.sendKeys(fb_userpass);
 
   // 抓到登入按鈕然後點擊
-  const login_elem = await driver.wait(until.elementLocated(By.xpath(`//*[@id="loginbutton"]`)));
-  login_elem.click();
+  const login_ele = await driver.wait(until.elementLocated(By.xpath(`//*[@id="loginbutton"]`)));
+  login_ele.click();
 }
 loginFacebook(); // 登入FB
