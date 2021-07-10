@@ -21,7 +21,7 @@ const path = require('path');//用於處理文件路徑的小工具
 const fs = require("fs");//讀取檔案用
 
 async function initDrive () {
-  if (!checkDriver()) {// 檢查driver是否是設定，如果無法設定就結束程式
+  if (!checkDriver()) {// 檢查driver是否有設定，如果無法設定就結束程式
     await lineNotify(false, `\n\n❗️錯誤訊息❗️：\n無法設定瀏覽器driver`);
     return;
   }
