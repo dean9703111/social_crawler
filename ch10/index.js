@@ -32,7 +32,7 @@ function checkDriver () {
 }
 
 async function openCrawlerWeb () {
-  if (!checkDriver()) {// 檢查driver是否有設定，如果無法設定就結束程式
+  if (!checkDriver()) {// 檢查driver是否設定，如果無法設定就結束程式
     return;
   }
   let driver;

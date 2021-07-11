@@ -8,7 +8,7 @@ const path = require('path');//用於處理文件路徑的小工具
 const fs = require("fs");//讀取檔案用
 
 async function initDrive () {
-  if (!checkDriver()) {// 檢查driver是否有設定，如果無法設定就結束程式
+  if (!checkDriver()) {// 檢查driver是否設定，如果無法設定就結束程式
     return;
   }
   let driver = await new webdriver.Builder().
