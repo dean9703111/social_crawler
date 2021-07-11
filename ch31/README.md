@@ -8,6 +8,13 @@
 [POSTMAN 官網](https://www.postman.com/)  
 [POSTMAN 新手教學](https://tw.alphacamp.co/blog/postman-api-tutorial-for-beginners)  
 **LINE Notify 的 URL**：`https://notify-api.line.me/api/notify`  
+**LINE Notify 的 form-data 範例**：  
+| KEY              | VALUE              | DESCRIPTION     |
+|------------------|--------------------|-----------------|
+| message          | 來自寶寶的爬蟲通知 | 純文字( 必填)   |
+| stickerPackageId | 2                  | 貼圖的PackageId |
+| stickerId        | 144                | 貼圖的Id        |
+
 [HTTP 狀態碼一覽表](https://blog.poychang.net/http-status-code/)  
 
 ### 參考資源
