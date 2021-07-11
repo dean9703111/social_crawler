@@ -9,7 +9,7 @@
 ### 專案使用提醒
 1.	調整「.env」檔，填上LINE_TOKEN資訊
 2.	記得先在終端機輸入`yarn`將套件安裝
-3.	套件安裝完後在終端機輸入`node tools/lineNotify.js`發出 LINE Notify 的 request
+3.	套件安裝完後在終端機輸入`node tools/lineNotify.js`發出 LINE Notify 的 Request
 
 ### 參考資源
 [由前端request的幾種方法](https://medium.com/dot-js/由前端request-的幾種方法-fbf8a0b4023a)  

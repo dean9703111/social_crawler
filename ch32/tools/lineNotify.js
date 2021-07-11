@@ -9,7 +9,7 @@ function lineNotify () {
   const form_data = new FormData();
   form_data.append("message", '測試 lineNotify');
 
-  //設定 LINE Notify 的 權杖 & form-data
+  //設定 LINE Notify 的權杖 & form-data
   const headers = Object.assign({
     'Authorization': `Bearer ${token}`
   }, form_data.getHeaders());
