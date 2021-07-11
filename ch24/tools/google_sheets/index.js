@@ -179,7 +179,7 @@ async function getLastCol (title, auth) {
   try {
     let values = (await sheets.spreadsheets.values.batchGet(request)).data.valueRanges[0].values;
     // console.log(title + " StartCol: " + toColumnName(values.length + 1))
-    return toColumnName(values.length + 1);
+    return toColumnName(values.length + 1);// +1是為了取得空白欄位
   } catch (err) {
     console.error(err);
   }
