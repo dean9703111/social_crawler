@@ -113,6 +113,9 @@ async function loginFacebookGetTrace (driver) {
       break;
     }
   }
+  if (fb_trace === null) {//如果沒有抓到數字，就走查詢頁面
+    is_accurate = false;
+  }
 
   // 如果判斷追蹤人數不夠精準就需要改用搜尋的方式
   if (!is_accurate) {
@@ -130,6 +133,9 @@ async function loginFacebookGetTrace (driver) {
         const keyword = fb_text.indexOf("位追蹤者");
         fb_text = fb_text.substring(0, keyword);
         const search_trace = fb_text.replace(/\D/g, '');//只取數字
+        if (fb_trace === null) {//先給預設值
+          fb_trace = search_trace;
+        }
         if (((search_trace - fb_trace) / fb_trace) < 0.2) {//追蹤人數超過一萬且誤差值小於20％基本就是匹配的
           fb_trace = search_trace;
         }
