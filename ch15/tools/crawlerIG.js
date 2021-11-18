@@ -6,7 +6,8 @@ exports.crawlerIG = crawlerIG;//讓其他檔案在引入時可以使用這個函
 
 async function crawlerIG (driver) {
   await loginInstagram(driver);
-  const fan_page_url = "https://www.instagram.com/the_barefoot_master/";
+  //const fan_page_url = "https://www.instagram.com/the_barefoot_master/"; //此粉專以改名
+  const fan_page_url = "https://www.instagram.com/baobaonevertell/";
   await goNewPage(driver, fan_page_url);
   const fan_page_name = "赤腳大仙";
   await getTrace(driver, fan_page_name);
@@ -27,7 +28,7 @@ async function loginInstagram (driver) {
   login_ele.click();
 
   //登入後才會有右上角功能列，我們以這個來判斷是否登入
-  await driver.wait(until.elementLocated(By.xpath(`//*[@id="react-root"]//*[contains(@class,"_47KiJ")]`)));
+  await driver.wait(until.elementLocated(By.xpath(`//*[@id="react-root"]//*[contains(@class,"J5g42")]`)));
 }
 
 async function goNewPage (driver, web_url) {

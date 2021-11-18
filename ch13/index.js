@@ -63,10 +63,11 @@ async function loginInstagramGetTrace () {
   login_ele.click();
 
   //登入後才會有右上角功能列，我們以這個來判斷是否登入
-  await driver.wait(until.elementLocated(By.xpath(`//*[@id="react-root"]//*[contains(@class,"_47KiJ")]`)));
+  await driver.wait(until.elementLocated(By.xpath(`//*[@id="react-root"]//*[contains(@class,"J5g42")]`)));
 
   //登入成功後要前往粉專頁面
-  const fan_page = "https://www.instagram.com/the_barefoot_master/";
+  //const fan_page = "https://www.instagram.com/the_barefoot_master/"; //此粉專以改名
+  const fan_page = "https://www.instagram.com/baobaonevertell/";
   await driver.get(fan_page);
   await driver.sleep(3000);
 
