@@ -62,4 +62,4 @@
 >
 > **2021.11.15**：因應 FB 改版，微調爬蟲程式邏輯，解決「追蹤人數」精確度判定問題，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/6de0cc0d598c8b4cf8d2d7db5a4f7a6fcd579677)  
 > **2021.11.18**：因應 IG 改版，調整登入檢測程式；並修改部分範例連結，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/fe7118dceb474150a93320d7db82b7edcbdd5b87)  
-> **2021.12.13**：因應 IG 改版，調整抓取追蹤人數的 XPath，相關 commit 請看：[連結]()
+> **2021.12.13**：因應 IG 改版，調整抓取追蹤人數的 XPath，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/854245776e6631f27fd8957be8df891791d6d3c0)
