@@ -62,7 +62,7 @@ async function loginFacebookGetTrace () {
   login_ele.click();
 
   // 用登入後才有的元件，來判斷是否登入
-  await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"fzdkajry")]`)));
+  await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"oajrlxb2")]`)));
 
   // 前往粉專頁面
   const fan_page = "https://www.facebook.com/baobaonevertell/";
