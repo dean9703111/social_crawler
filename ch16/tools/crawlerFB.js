@@ -101,7 +101,7 @@ async function getTraceFromSearch (driver, fan_page_name, fb_trace) {
     const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)), short_time);
     for (const fb_trace_ele of fb_trace_eles) {
       let fb_text = await fb_trace_ele.getText();
-      if (fb_text.includes('粉絲專頁') && fb_text.includes('位追蹤者')) {
+      if (fb_text.includes('位追蹤者')) {
         //利用關鍵字移除後面多餘的資訊
         const keyword = fb_text.indexOf("位追蹤者");
         fb_text = fb_text.substring(0, keyword);
