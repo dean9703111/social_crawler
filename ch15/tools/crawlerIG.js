@@ -38,10 +38,12 @@ async function goNewPage (driver, web_url) {
 
 async function getTrace (driver, fan_page_name) {
   let ig_trace = null;//這是紀錄IG追蹤人數
-  const ig_trace_xpath = `//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a/div/span`;
-  const ig_trace_ele = await driver.wait(until.elementLocated(By.xpath(ig_trace_xpath)));
-  // IG因為當人數破萬時會縮寫顯示，所以改抓title
-  ig_trace = await ig_trace_ele.getAttribute('title');
-  ig_trace = ig_trace.replace(/\D/g, '');//只取數字
+  // const ig_trace_xpath = `//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a/div/span`;
+  // 原本的 Xpath 被 IG 改掉了，改用 Class 來抓
+  const ig_trace_xpath =`//*[contains(@class,"_ac2a")]`
+  const ig_trace_eles = await driver.wait(until.elementsLocated(By.xpath(ig_trace_xpath)));
+  // 剛好這個 Class 只有 3 個，我們需要的資訊在第 2 個 Class，IG 因為當人數破萬時會縮寫顯示，所以改抓title
+  const ig_text = await ig_trace_eles[1].getAttribute('title');
+  ig_trace = ig_text.replace(/\D/g, '');//只取數字
   console.log(`「${fan_page_name}」在IG追蹤人數：${ig_trace}`);
 }

@@ -67,3 +67,4 @@
 > **2021.2.13**：因應 IG 改版，調整抓取追蹤人數的 XPath(IG 常常會有路徑上細微的調整)，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/1736b56e3a3fb341c6f3d37b8b88b801c545d8da)  
 > **2021.3.22**：因應 FB 改版，調整確認是否登入的 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/0583009d8aa24613e7a409d7ba51daeab11f7968)  
 > **2021.4.27**：因應 FB 改版，調整搜尋粉絲頁面的文字分析，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/199ec02b328a8731e400bc18baded1270ab45965)
+> **2021.6.1**：因應 IG 改版，粉絲人數原本用 Xpath，現在改用 Class 來抓，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/199ec02b328a8731e400bc18baded1270ab45965)
