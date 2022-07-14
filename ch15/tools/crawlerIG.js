@@ -9,7 +9,7 @@ async function crawlerIG (driver) {
   //const fan_page_url = "https://www.instagram.com/the_barefoot_master/"; //此粉專以改名
   const fan_page_url = "https://www.instagram.com/baobaonevertell/";
   await goNewPage(driver, fan_page_url);
-  const fan_page_name = "赤腳大仙";
+  const fan_page_name = "寶寶不說";
   await getTrace(driver, fan_page_name);
 }
 

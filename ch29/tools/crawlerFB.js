@@ -87,23 +87,34 @@ async function getTrace (driver, fan_page_name) {
   let is_accurate = true;//確認追蹤人數是否精準
   try {
     //因為考慮到每個粉專顯示追蹤人數的位置都不一樣，所以就採用全抓再分析
-    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"knvmm38d")]`)), short_time);
+    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"lrazzd5p")]`)), short_time);
     for (const fb_trace_ele of fb_trace_eles) {
       const fb_text = await fb_trace_ele.getText();
-      if (fb_text.includes('人在追蹤')) {// 經典版顯示方式
-        fb_trace = fb_text.replace(/\D/g, '');// 只取數字
-        break;
-      } else if (fb_text.includes('位追蹤者')) {// 新版顯示方式
+      if (fb_text.includes('位追蹤者')) { // 新版顯示方式
         if (fb_text.includes('萬位追蹤者')) {
-          fb_trace = fb_text.replace(' 萬位追蹤者', '');// 超過萬需要特別計算
+          fb_trace = fb_text.replace(' 萬位追蹤者', ''); // 超過萬需要特別計算
           fb_trace = parseFloat(fb_trace) * 10000;
           is_accurate = false;
         } else {
-          fb_trace = fb_text.replace(/\D/g, '');// 只取數字
+          fb_trace = fb_text.replace(/\D/g, ''); // 只取數字
         }
         break;
+      } else if (fb_text.includes('個讚')) {
+        fb_trace = fb_text.replace(/\D/g, ''); // 只取數字
       }
     }
+    if (fb_trace === null) {
+      const fb_trace_eles2 = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"b1v8xokw")]`)), short_time);
+      for (const fb_trace_ele of fb_trace_eles2) {
+        const fb_text = await fb_trace_ele.getText();
+        if (fb_text.includes('人在追蹤')) { // 經典版顯示方式
+            fb_trace = fb_text.replace(/\D/g, ''); // 只取數字
+          break;
+        }
+      }
+    }
+    
+    /* 2022.7.14 FB 改版後，即使於搜尋頁面也無法抓取到追蹤者詳細數據，故將相關程式註解（怕刪除導致讀者閱讀時的困惑）
     if (fb_trace === null) {//如果沒有抓到數字，就走查詢頁面
       is_accurate = false;
     }
@@ -111,6 +122,7 @@ async function getTrace (driver, fan_page_name) {
     if (!is_accurate) {
       fb_trace = await getTraceFromSearch(driver, fan_page_name, fb_trace);
     }
+    */
     return fb_trace;
   } catch (e) {
     console.error(`「${fan_page_name}」無法讀取FB追蹤人數`);
