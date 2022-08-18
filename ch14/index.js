@@ -64,7 +64,7 @@ async function loginInstagramGetTrace (driver) {
   let ig_trace = null;//這是紀錄IG追蹤人數
   // const ig_trace_xpath = `//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a/div/span`;
   // 原本的 Xpath 被 IG 改掉了，改用 Class 來抓
-  const ig_trace_xpath =`//*[contains(@class,"_ac2a")]`
+  const ig_trace_xpath = `//*[contains(@class,"_ac2a")]`;
   const ig_trace_eles = await driver.wait(until.elementsLocated(By.xpath(ig_trace_xpath)));
   // 剛好這個 Class 只有 3 個，我們需要的資訊在第 2 個 Class，IG 因為當人數破萬時會縮寫顯示，所以改抓title
   const ig_text = await ig_trace_eles[1].getAttribute('title');
@@ -89,7 +89,7 @@ async function loginFacebookGetTrace (driver) {
   login_ele.click();
 
   //用登入後才有的元件，來判斷是否登入
-  await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"oajrlxb2")]`)));
+  await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"om3e55n1")]`)));
 
   //前往粉專頁面
   const fan_page = "https://www.facebook.com/baobaonevertell/";
@@ -99,7 +99,7 @@ async function loginFacebookGetTrace (driver) {
   let fb_trace = null;//這是紀錄FB追蹤人數
   let is_accurate = true;//確認追蹤人數是否精準
   //因為考慮到每個粉專顯示追蹤人數的位置都不一樣，所以就採用全抓再分析
-  const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"lrazzd5p")]`)));
+  const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"g4qalytl")]`)));
   for (const fb_trace_ele of fb_trace_eles) {
     const fb_text = await fb_trace_ele.getText();
     if (fb_text.includes('位追蹤者')) { // 新版顯示方式
@@ -112,15 +112,17 @@ async function loginFacebookGetTrace (driver) {
       }
       break;
     } else if (fb_text.includes('個讚')) {
-      fb_trace = fb_text.replace(/\D/g, ''); // 只取數字
+      fb_trace = fb_text.
+        substr(0, fb_text.indexOf('個讚')). // 先移除後面字串
+        replace(/\D/g, ''); // 只取數字
     }
   }
   if (fb_trace === null) {
-    const fb_trace_eles2 = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"b1v8xokw")]`)));
+    const fb_trace_eles2 = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"pbevjfx6")]`)));
     for (const fb_trace_ele of fb_trace_eles2) {
       const fb_text = await fb_trace_ele.getText();
       if (fb_text.includes('人在追蹤')) { // 經典版顯示方式
-          fb_trace = fb_text.replace(/\D/g, ''); // 只取數字
+        fb_trace = fb_text.replace(/\D/g, ''); // 只取數字
         break;
       }
     }
