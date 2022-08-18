@@ -84,4 +84,4 @@
 > **2022.4.27**：因應 FB 改版，調整搜尋粉絲頁面的文字分析，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/199ec02b328a8731e400bc18baded1270ab45965)  
 > **2022.6.1**：因應 IG 改版，粉絲人數原本用 Xpath，現在改用 Class 來抓，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/630a00b6f1b1a2cdb5f9fb46ad30aaf36ea5f1c6)  
 > **2022.7.14**：因應 FB 改版，當追蹤人數破萬後不顯示詳細數據，故將前往搜尋頁面的程式註解，並調整原程式架構，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/5f0ddfb58102958c9b918ad77feb9cc81af50310)  
-> **2021.8.19**：因應 FB 改版，調整登入元素的 Class、搜尋粉絲頁面的文字分析及 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/199ec02b328a8731e400bc18baded1270ab45965)  
+> **2021.8.19**：因應 FB 改版，調整登入元素的 Class、搜尋粉絲頁面的文字分析及 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/57adff57888cd934b54f94a0cbf1981bf2bb32f6)  
