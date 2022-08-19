@@ -78,7 +78,9 @@ async function getTrace (driver, fan_page_name) {
       const fb_text = await fb_trace_ele.getText();
       if (fb_text.includes('位追蹤者')) { // 新版顯示方式
         if (fb_text.includes('萬位追蹤者')) {
-          fb_trace = fb_text.replace(' 萬位追蹤者', ''); // 超過萬需要特別計算
+          fb_trace = fb_text.substr(0, fb_text.indexOf('萬位追蹤者')); // 超過萬需要特別計算
+          // 如果粉絲頁顯示「xxx 個讚 • yyy 萬位追蹤者」就會需要用到下面的方案解析
+          fb_trace = fb_trace.substr(fb_trace.indexOf('•') + 1, fb_trace.length);
           fb_trace = parseFloat(fb_trace) * 10000;
           is_accurate = false;
         } else {
