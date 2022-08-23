@@ -65,7 +65,7 @@ async function loginFacebookGetTrace () {
   await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"om3e55n1")]`)));
 
   // 前往粉專頁面
-  const fan_page = "https://www.facebook.com/pinghsunmagic/";
+  const fan_page = "https://www.facebook.com/baobaonevertell/";
   await driver.get(fan_page);
   await driver.sleep(3000);
 
