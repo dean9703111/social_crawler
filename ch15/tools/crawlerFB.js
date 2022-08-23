@@ -44,14 +44,19 @@ async function getTrace (driver, fan_page_name) {
   for (const fb_trace_ele of fb_trace_eles) {
     const fb_text = await fb_trace_ele.getText();
     if (fb_text.includes('位追蹤者')) { // 新版顯示方式
-      if (fb_text.includes('萬位追蹤者')) {
-        fb_trace = fb_text.substr(0, fb_text.indexOf('萬位追蹤者')); // 超過萬需要特別計算
-        // 如果粉絲頁顯示「xxx 個讚 • yyy 萬位追蹤者」就會需要用到下面的方案解析
-        fb_trace = fb_trace.substr(fb_trace.indexOf('•') + 1, fb_trace.length);
+      if (fb_text.includes('•')) { // 如果有就需要先特別處理
+        if (fb_text.indexOf('位追蹤者') > fb_text.indexOf('•')) { // 如果是「xxx 個讚 • yyy 位追蹤者」
+          fb_trace = fb_text.substr(fb_text.indexOf('•') + 1, fb_text.length);
+        } else { // 如果是「yyy 位追蹤者 • 正在追蹤 x 人」
+          fb_trace = fb_text.substr(0 , fb_text.indexOf('•'));
+        }
+      }
+      if (fb_trace.includes('萬位追蹤者')) {
+        fb_trace = fb_trace.substr(0, fb_trace.indexOf('萬位追蹤者')); // 超過萬需要特別計算
         fb_trace = parseFloat(fb_trace) * 10000;
         is_accurate = false;
       } else {
-        fb_trace = fb_text.replace(/\D/g, ''); // 只取數字
+        fb_trace = fb_trace.replace(/\D/g, ''); // 只取數字
       }
       break;
     } else if (fb_text.includes('個讚')) {
