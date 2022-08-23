@@ -86,4 +86,4 @@
 > **2022.7.14**：因應 FB 改版，當追蹤人數破萬後不顯示詳細數據，故將前往搜尋頁面的程式註解，並調整原程式架構，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/5f0ddfb58102958c9b918ad77feb9cc81af50310)  
 > **2022.8.19**：因應 FB 改版，調整登入元素的 Class、搜尋粉絲頁面的文字分析及 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/57adff57888cd934b54f94a0cbf1981bf2bb32f6)  
 > **2022.8.19**：FB 粉絲團對追蹤、按讚的文字顯示邏輯進行調整，因此對程式做相應的設計，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/523d35ec22ef0b98c19f1224495a8ddd8481628d)  
-> **2022.8.23**：FB 粉絲團再次對追蹤、按讚的文字顯示邏輯進行調整，因此對程式做相應的設計，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/523d35ec22ef0b98c19f1224495a8ddd8481628d)  
+> **2022.8.23**：FB 粉絲團再次對追蹤、按讚的文字顯示邏輯進行調整，因此對程式做相應的設計，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/2971463a8818c4e1591312772810d4bc6a471846)  
