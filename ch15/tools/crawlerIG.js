@@ -28,7 +28,7 @@ async function loginInstagram (driver) {
   login_ele.click();
 
   //登入後才會有右上角功能列，我們以這個來判斷是否登入
-  await driver.wait(until.elementLocated(By.xpath(`//*[@id="react-root"]//*[contains(@class,"J5g42")]`)));
+  await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"_acur")]`)));
 }
 
 async function goNewPage (driver, web_url) {
