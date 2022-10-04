@@ -72,7 +72,7 @@ async function loginFacebook (driver) {
 
       //因為登入這件事情要等Server回應，你直接跳轉粉絲專頁會導致登入失敗
       //用登入後才有的元件，來判斷是否登入
-      await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"om3e55n1")]`)), long_time);
+      await driver.wait(until.elementLocated(By.xpath(`//*[contains(@class,"x1qhmfi1")]`)), long_time);
       return true;
     } catch (e) {
       console.error('FB登入失敗');
@@ -87,7 +87,7 @@ async function getTrace (driver, fan_page_name) {
   let is_accurate = true;//確認追蹤人數是否精準
   try {
     //因為考慮到每個粉專顯示追蹤人數的位置都不一樣，所以就採用全抓再分析
-    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"g4qalytl")]`)), short_time);
+    const fb_trace_eles = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"xi81zsa")]`)), short_time);
     for (const fb_trace_ele of fb_trace_eles) {
       const fb_text = await fb_trace_ele.getText();
       if (fb_text.includes('位追蹤者')) { // 新版顯示方式
