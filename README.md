@@ -89,3 +89,4 @@
 > **2022.8.23**：FB 粉絲團再次對追蹤、按讚的文字顯示邏輯進行調整，因此對程式做相應的設計，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/2971463a8818c4e1591312772810d4bc6a471846)  
 > **2022.9.22**：因應 IG 改版，調整確認是否登入的 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/34a962506fc2a5d24d95fbbe7b410d8280d5c498)  
 > **2022.10.4**：因應 FB 改版，調整確認是否登入、追蹤人數的 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/16e29f39c87bb27d13a9c588ca0e84ff71f3fb02)  
+> **2022.10.30**：因應 IG 改版，調整確認是否登入的 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/34a962506fc2a5d24d95fbbe7b410d8280d5c498)  
