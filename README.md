@@ -90,3 +90,4 @@
 > **2022.9.22**：因應 IG 改版，調整確認是否登入的 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/34a962506fc2a5d24d95fbbe7b410d8280d5c498)  
 > **2022.10.4**：因應 FB 改版，調整確認是否登入、追蹤人數的 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/16e29f39c87bb27d13a9c588ca0e84ff71f3fb02)  
 > **2022.10.30**：因應 IG 改版，調整確認是否登入的 Class，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/cc2f52747063748913560cf8d7b12050aaab67fe)  
+> **2022.11.26**：因應 IG 改版，調整登入的網址，相關 commit 請看：[連結](https://github.com/dean9703111/social_crawler/commit/a494a7808eb027ef644acdc53d640fa9868d63c1)  
