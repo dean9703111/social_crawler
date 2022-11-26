@@ -31,7 +31,7 @@ async function goNewPage (driver, web_url) {
 }
 
 async function loginInstagram (driver) {
-  const ig_login_url = 'https://www.instagram.com/accounts/login';//IG登入頁面  
+  const ig_login_url = 'https://www.instagram.com';//IG登入頁面  
   if (await goNewPage(driver, ig_login_url)) {
     try {
       //填入IG登入資訊

@@ -2,7 +2,7 @@
 ## Ch13	舉一反三，帶你了解IG爬蟲不可忽略的細節
 
 ### 13.1 分析IG登入畫面元件
-[IG 登入頁面](https://www.instagram.com/accounts/login/)  
+[IG 登入頁面](https://www.instagram.com/)  
 [IG 首頁](https://www.instagram.com/)  
 
 ### 專案使用提醒

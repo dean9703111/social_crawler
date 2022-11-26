@@ -49,7 +49,7 @@ async function loginInstagramGetTrace () {
     console.error(e);
     return;
   }
-  const web = 'https://www.instagram.com/accounts/login';//IG登入頁面
+  const web = 'https://www.instagram.com';//IG登入頁面
   await driver.get(web);//在這裡要用await確保打開完網頁後才能繼續動作
 
   //填入IG登入資訊
