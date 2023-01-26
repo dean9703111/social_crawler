@@ -72,7 +72,12 @@ async function getTrace (driver, fan_page_name) {
     const ig_trace_eles = await driver.wait(until.elementsLocated(By.xpath(ig_trace_xpath)), short_time);
     // 剛好這個 Class 只有 3 個，我們需要的資訊在第 2 個 Class，IG 因為當人數破萬時會縮寫顯示，所以改抓title
     const ig_text = await ig_trace_eles[1].getAttribute('title');
-    ig_trace = ig_text.replace(/\D/g, '');//只取數字
+    if (ig_text.includes('萬')) {
+      ig_trace = ig_text.substr(0, ig_text.indexOf('萬')); // 超過萬需要特別計算
+      ig_trace = parseFloat(ig_text) * 10000;
+    } else {
+      ig_trace = ig_text.replace(/\D/g, '');//只取數字
+    }
     return ig_trace;
   } catch (e) {
     console.error(`「${fan_page_name}」無法讀取IG追蹤人數`);

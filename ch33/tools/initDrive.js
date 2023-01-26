@@ -15,7 +15,7 @@ if (process.env.HEADLESS === 'true') {
   options.addArguments('--disable-dev-shm-usage');//使用共享內存RAM
   options.addArguments('--disable-gpu');//規避部分chrome gpu bug
   //偽裝瀏覽器身份
-  options.addArguments("user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'");
+  options.addArguments("user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'");
 }
 const path = require('path');//用於處理文件路徑的小工具
 const fs = require("fs");//讀取檔案用
